@@ -9,7 +9,7 @@ class HtmlDownloader(object):
         
         response = urlopen(url)
         
-        if response.getcode() != 200:
+        if response.getcode() != 200: #判断是否成功访问
             return None
         
         return response.read()
