@@ -14,28 +14,28 @@ class SpiderMain(object):
         self.urls.add_new_url(root_url)
         while self.urls.has_new_url():
             try:
-                new_url = self.urls.get_new_url()
+                new_url = self.urls.get_new_url() #获取一个未爬取的url
                 print('craw %d : %s' % (count, new_url))
-                html_cont = self.downloader.download(new_url)
-                new_urls, new_data = self.parser.parse(new_url, html_cont)
-                self.urls.add_new_urls(new_urls)
-                self.outputer.collect_data(new_data)
+                html_cont = self.downloader.download(new_url) #下载
+                new_urls, new_data = self.parser.parse(new_url, html_cont) #获取新的urls和新的数据
+                self.urls.add_new_urls(new_urls) #将新的urls添加到urls中
+                self.outputer.collect_data(new_data) #收集数据
               
-                if count == 50:
+                if count == 50: #爬取50个链接
                     break
               
                 count = count + 1
             except:
                 print('craw failed')                
             
-        self.outputer.output_html()
+        self.outputer.output_html() #输出
     
     
 
 
 
 if __name__ == "__main__":
-    root_url = "https://baike.baidu.com/item/Python/407313"
+    root_url = "https://baike.baidu.com/item/Python/407313" #起始url
     obj_spider = SpiderMain()
     obj_spider.craw(root_url)
 
