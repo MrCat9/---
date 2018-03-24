@@ -1,3 +1,7 @@
+import io  
+import sys  
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='gb18030')
+
 class HtmlOutputer(object):
     def __init__(self): #初始化
         self.datas = []
@@ -8,7 +12,7 @@ class HtmlOutputer(object):
         self.datas.append(data) #在列表末尾添加新的对象
 
     def output_html(self):
-        fout = open('output.html', 'w', encoding = 'utf-8') #以写形式打开'output.html'，编码为'utf-8'
+        fout = open('output.html', 'w', encoding = 'gb18030') #以写形式打开'output.html'，编码为'gb18030'
         
         fout.write("<html>")
         fout.write("<body>")
