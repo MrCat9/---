@@ -1,7 +1,3 @@
-import io  
-import sys  
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='gb18030')
-
 class HtmlOutputer(object):
     def __init__(self): #初始化
         self.datas = []
